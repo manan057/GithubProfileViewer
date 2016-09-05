@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Profile from './github/Profile.jsx';
-
+import Search from './github/Search.jsx';
 
 class App extends Component {
   constructor(props){
@@ -31,6 +31,14 @@ class App extends Component {
     });
   }
 
+  handleFormSubmit(username) {
+    // alert(username);
+    this.setState({username: username}, function() {
+      this.getUserData();
+      this.getUserRepos();
+    });
+  }
+
   // Get user data from github
   getUserRepos() {
     $.ajax({
@@ -56,7 +64,8 @@ class App extends Component {
   render(){
     return (
       <div>
-        //passes all the props
+        <Search onFromSubmit = {this.handleFormSubmit.bind(this)}/>
+        {/* passes all the props */}
         <Profile {...this.state} />
       </div>
     )
