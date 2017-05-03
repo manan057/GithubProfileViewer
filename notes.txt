@@ -1,4 +1,0 @@
-echo node_modules >> .gitignore
-
-Make sure you check the spelling!
-Constructer ==> Constructor
